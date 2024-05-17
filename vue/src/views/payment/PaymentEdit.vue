@@ -1,5 +1,6 @@
+
 <script>
-import NavbarViewVue from '../inc/NavbarView.vue';
+import NavbarViewVue from "../inc/NavbarView.vue";
 import axios from 'axios';
 
 export default {
@@ -9,52 +10,74 @@ export default {
     data() {
         return {
             url: 'http://127.0.0.1:8000/api/payment',
-            customer_id_list: '',
-            customer_name: '',
-            payment_amount: '',
+            customer_id: '',
+            amount: '',
             transaction_no: '',
-            date: '',
-            customer_id_listError:'',
-            payment_amountError:'',
-            transaction_noError:'',
-            dateError:''
-
+            date: '',  
+            payment_list: [],
+            customer_idError:'',
+            amountError: '',
+            transaction_noError: '',
+            dateError: '',
+            id: this.$route.params.id
         }
     },
-    mounted() {
-        this.getpayment();
-    },
+
     methods: {
-        getpayment() {
+        getEmployeeType() {
             axios.get('http://127.0.0.1:8000/api/customer')
-            .then(res => {
-                this.customer_id_list = (res.data.data)
-            })
+                .then(res => {
+                    const getData = res.data.data;
+                    this.payment_list = getData;
+                })
+                .catch(error => {
+                    console.error('Error fetching employee types:', error);
+                });
         },
-        savepayment() {
-            axios.post(`${this.url}`, {
-                customer_id: this.customer_name,
-                amount: this.payment_amount,
+        getEmployee() {
+            const id = this.id
+            axios.get(this.url + '/' + this.id + '/edit')
+                .then((res) => {
+                    const dt = res.data.data;
+                    this.amount = dt.amount;
+                    this.transaction_no = dt.transaction_no;
+                    this.date = dt.date;
+                    this.customer_id = dt.customer_id;
+
+                    //console.log(dt.expense_category_id);
+                })
+        },
+
+        updatePayment() {
+            const aldata = {
+                amount: this.amount,
                 transaction_no: this.transaction_no,
-                date: this.date
-            })
-            .then(res =>{
-                //console.log(res)
-                this.$router.push("/dashboard/payment")
-            })
+                date: this.date,
+                customer_id: this.customer_id
+                
+            };
+            axios.put(`${this.url}/${this.id}`, aldata)
+                .then(res => {
+                    this.$router.push("/dashboard/payment");
+                })
+                .catch(error => {
+                    console.error('Error updating employee:', error);
+                });
         },
+        // clearErrors() {
+        //     this.amountError = '';
+        //     this.transaction_noError = '';
+        //     this.dateError = '';
+        //     this.employeeTypeError = '';
+        // }
     },
-//     watch: {
-//         payment: function () {
-//       if (this.payment.length < 4) {
-//         this.paymentError = "Payment Required";
-//       } else {
-//         this.paymentError = "";
-//       }
-//     },
-// },
+    mounted() {
+        this.getEmployeeType();
+        this.getEmployee();
+    },
 }
 </script>
+
 
 
 <template>
@@ -67,28 +90,28 @@ export default {
                         <div class="card-header mt-5">
                             <h4 class="table_heading">Payment List Add</h4>
                         </div>
-                        <div class="card-body">
-                            <!-- <form @submit.prevent="handleSubmit">  -->
+                            <div class="card-body">
+                                <!-- <form @submit.prevent="handleSubmit">  -->
                                 <div class="mb-3">
                                     <label for="customerid" class="form-label">Customer Name</label>
-                                    <select class="form-select" v-model="customer_name"
+                                    <select class="form-select" v-model="customer_id"
                                         aria-label="Default select example">
                                         <option disabled value="">input customer name</option>
-                                        <option v-for="(p, i) in customer_id_list" :key="i" :value="p.id">
+                                        <option v-for="(p, i) in payment_list" :key="i" :value="p.id">
                                             {{ p.customer_name }}</option>
 
                                     </select>
-                                    <p style="color:red" v-if="customer_id_listError">
-                                        {{ customer_id_listError }}
+                                    <p style="color:red" v-if="customer_idError">
+                                        {{ customer_idError }}
                                     </p>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="payment" class="form-label">Payment Amount</label>
-                                    <input type="number" v-model="payment_amount" class="form-control" id="payment"
+                                    <input type="number" v-model="amount" class="form-control" id="payment"
                                         placeholder="Enter payment amount">
-                                    <p style="color:red" v-if="payment_amountError">
-                                        {{ payment_amountError }}
+                                    <p style="color:red" v-if="amountError">
+                                        {{ amountError }}
                                     </p>
                                 </div>
 
@@ -110,7 +133,7 @@ export default {
                                     </p>
                                 </div>
 
-                                <button type="submit" @click="savepayment" class="btn btn-primary">Submit</button>
+                                <button type="submit" @click="updatePayment" class="btn btn-primary">Submit</button>
                             <!-- </form> -->
                         </div>
                     </div>
