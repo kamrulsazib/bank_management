@@ -2,7 +2,7 @@
 import NavbarViewVue from '../inc/NavbarView.vue';
 import axios from 'axios';
 
-export default{
+export default {
     components: {
         NavbarViewVue
     },
@@ -18,27 +18,27 @@ export default{
     },
     methods: {
         getDeposit() {
-        axios.get(`${this.url}`)
-          .then(response => {
-            this.deposit = (response.data.data);
-          })
-          .catch(error => {
-            console.error('Error fetching payment', error);
-          });
-      },
-      depositDelete(id){
-        axios.delete(`${this.url}/${id}`)
-        .then(() => {
-            this.getDeposit();
-            this.$router.push('/dashboard/cashDeposit');
-        })
-        .catch(error => {
-            console.error('Error deleting cashDeposit', error);
-        });
-      },
-      edit(id) {
-        this.$router.push({ name: 'paymentedit', params: { id: id } });
-      }
+            axios.get(`${this.url}`)
+                .then(response => {
+                    this.deposit = (response.data.data);
+                })
+                .catch(error => {
+                    console.error('Error fetching payment', error);
+                });
+        },
+        depositDelete(id) {
+            axios.delete(`${this.url}/${id}`)
+                .then(() => {
+                    this.getDeposit();
+                    this.$router.push('/dashboard/cashDeposit');
+                })
+                .catch(error => {
+                    console.error('Error deleting cashDeposit', error);
+                });
+        },
+        edit(id) {
+            this.$router.push({ name: 'paymentedit', params: { id: id } });
+        }
     }
 
 }
@@ -46,7 +46,7 @@ export default{
 
 <template>
     <main>
-       <NavbarViewVue/>
+        <NavbarViewVue />
         <section class="main_content dashboard_part">
             <div class="container card card-body mt-5 ms-2">
                 <div class="row">
@@ -66,19 +66,12 @@ export default{
                         <h4 class="m-3 table_heading">Cash Deposit List</h4>
                     </div>
                     <div class="col-md-6 text-end mt-2">
-
-                        <button class="btn btn-warning">Add New</button>
-
                         <RouterLink to="/dashboard/cashDepositAdd" class="btn btn-warning">Add New</RouterLink>
-
-
                     </div>
-
                 </div>
-
                 <table class="table table-striped ">
                     <thead class="table_color">
-                        <tr>
+                        <tr> 
                             <th>SL</th>
                             <th>Customer Name</th>
                             <th>Deposit Amount</th>
