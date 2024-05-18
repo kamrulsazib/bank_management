@@ -1,43 +1,43 @@
 <script>
-import NavbarViewVue from "../inc/NavbarView.vue";
+import NavbarViewVue from '../inc/NavbarView.vue';
 import axios from 'axios';
 
 export default {
-    components: {
+    components:{
         NavbarViewVue
     },
     data() {
-        return {
-            url: 'http://127.0.0.1:8000/api/cardDetails',
-            cardDetails: []
+        return{
+            url: 'http://127.0.0.1:8000/api/card',
+            card: []
         }
     },
     mounted() {
-        this.getCardDetails();
+        this.getcard();
     },
     methods: {
-        getCardDetails() {
-            axios.get('http://127.0.0.1:8000/api/cardDetails')
-                .then(res => {
-                    this.cardDetails = (res.data.data)
-                })
-
+        getcard() {
+            axios.get(`${this.url}`)
+            .then(response => {
+            this.card = (response.data.data);
+          })
+        //   .catch(error => {
+        //     console.error('Error fetching card', error);
+        //   });
         },
-       
-        cardDetailsDelete(id) {
-            axios.delete(`${this.url}/${id}`)
-                .then(() => {
-                    this.getCardDetails();
-                    this.$router.push('/dashboard/cardDetails');
-                })
-                .catch(error => {
-                    console.error('Error deleting card details:', error);
-                });
+        cardDelete(id) {
+        axios.delete(`${this.url}/${id}`)
+          .then(() => {
+            this.getcard();
+            this.$router.push('/dashboard/cardDetails');
+          })
+          .catch(error => {
+            console.error('Error deleting card', error);
+          });
         },
         edit(id) {
-            this.$router.push({ name: 'editCardDetails', params: { id: id } });
-        },
-
+        this.$router.push({ name: 'editCardDetails', params: { id: id } });
+      }
     }
 }
 
@@ -92,12 +92,15 @@ export default {
                                 <button class="btn btn-danger btn-sm ">Delete</button>
                             </td>
                         </tr> -->
-                         <tr v-for="(d, i) in cardType" :key="i">
+                         <tr v-for="(d, i) in card" :key="i">
                             <th>{{ i + 1 }}</th>
-                            <td>{{ d.card_type }}</td>
+                            <td>{{ d.name }}</td>
+                            <td>{{ d.card_number }}</td>
+                            <td>{{ d.customer.customer_name }}</td>
+                            <td>{{ d.card_type.card_type }}</td>
                             <td>
                                 <button class="btn btn-success btn-sm me-2" @click="edit(d.id)">Edit</button>
-                                <button class="btn btn-danger btn-sm" @click="cardDetailsDelete(d.id)">Delete</button>
+                                <button class="btn btn-danger btn-sm" @click="cardDelete(d.id)">Delete</button>
                             </td>
                         </tr> 
                     </tbody>

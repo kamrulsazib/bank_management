@@ -4,15 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\Card;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class CardController extends Controller
 {
+    use ApiResponse;
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $card = Card::orderBy('id','desc')->with('customer','cardType')->get();
+        return $this->sendResponse($card,'Card Return fetched successfully');
     }
 
     /**
@@ -28,23 +31,37 @@ class CardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'card_number' => 'required',
+            'customer_id' => 'required',
+            'card_type_id' => 'required',
+            
+        ]);
+        if ($validator->fails()) {
+            return $this->sendError('Validation Error.', $validator->errors(), 422);
+        }
+        $input = $request->all();
+        $card = Card::create($input);
+        return $this->sendResponse($card, 'Card created successfully!');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Card $card)
+    public function show(string $id)
     {
-        //
+        $card = Card::find($id);
+        return $this->sendResponse($card,'Card Return fetched successfully');
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Card $card)
+    public function edit(string $id)
     {
-        //
+        $card = Card::find($id);
+        return $this->sendResponse($card,'Card Edit successfully');
     }
 
     /**
@@ -58,8 +75,9 @@ class CardController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Card $card)
+    public function destroy(string $id)
     {
-        //
+        $card = Card::find($id)->delete();
+        return $this->sendResponse($card,'Card delete successfully');
     }
 }
