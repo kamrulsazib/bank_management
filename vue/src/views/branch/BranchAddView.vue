@@ -79,7 +79,7 @@ export default {
             })
                 .then(res => {
                     // console.log(res)
-                    this.$router.push("/dashboard/branch");
+                    this.$router.push("branch");
                 })
                 .catch(error => {
                     console.error("Error adding branch:", error);
