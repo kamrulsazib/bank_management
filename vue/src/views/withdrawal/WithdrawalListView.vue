@@ -29,7 +29,7 @@
         axios.delete(`${this.url}/${id}`)
           .then(() => {
             this.getWithdrawals();
-            this.$router.push('/dashboard/withdrawal');
+            this.$router.push({name:'withdrawal'});
           })
           .catch(error => {
             console.error('Error deleting withdrawal', error);
@@ -64,7 +64,7 @@
             <h4 class="m-3 table_heading">Withdrawal List</h4>
           </div>
           <div class="col-md-6 text-end mt-2">
-            <router-link to="/dashboard/withdrawalAdd" class="btn btn-warning">Add New</router-link>
+            <router-link :to="{name:'withdrawalAdd'}" class="btn btn-warning">Add New</router-link>
           </div>
         </div>
 

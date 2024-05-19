@@ -37,7 +37,6 @@ import PaymentAdd from '@/views/payment/PaymentAdd.vue'
 
 import LogInView from '@/views/LogInView.vue'
 import SignUpView from '@/views/SignUpView.vue'
-import CustomerView from '@/views/Customer/CustomerView.vue'
 import LoanTypeEdit from '@/views/loan_type/LoanTypeEdit.vue'
 import DepositTypeEdit from '@/views/deposit_type/DepositTypeEdit.vue'
 import DepositEdit from '@/views/deposit/DepositEdit.vue'
@@ -80,13 +79,23 @@ const router = createRouter({
             children: [{
                     path: 'dashboard',
                     name: 'dashboard',
-                    component: () =>
-                        import ("@/views/DashboardView.vue"),
+                    component: () =>import ("@/views/DashboardView.vue"),
                 },
                 {
                     path: 'accountType',
                     name: 'accountType',
                     component: AccountTypeListView
+                },
+                {
+                    path: 'accountTypeAdd',
+                    name: 'accountTypeAdd',
+                    component: AccountTypeAdd
+                },
+                {
+                    path: 'editAccountType/:id',
+                    name: 'editAccountType',
+                    component: AccountTypeEdit,
+                    props: true // Pass route params as props to the component
                 },
                 {
                     path: 'loanType',
@@ -207,17 +216,6 @@ const router = createRouter({
                     name: 'interestAdd',
                     component: InterestAdd
                 },
-                {
-                    path: 'accountTypeAdd',
-                    name: 'accountTypeAdd',
-                    component: AccountTypeAdd
-                },
-                {
-                    path: 'editAccountType/:id',
-                    name: 'editAccountType',
-                    component: AccountTypeEdit,
-                    props: true // Pass route params as props to the component
-                },
 
                 {
                     path: 'expesecategoryadd',
@@ -289,12 +287,12 @@ const router = createRouter({
                 },
 
                 {
-                    path: 'customerList/',
+                    path: 'customerList',
                     name: 'customerList',
-                    component: CustomerView
+                    component: () =>import ("@/views/Customer/CustomerView.vue"),
                 },
                 {
-                    path: 'cardType/',
+                    path: 'cardType',
                     name: 'cardType',
                     component: CardTypeListView
                 },

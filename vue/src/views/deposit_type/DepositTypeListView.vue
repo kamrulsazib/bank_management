@@ -27,7 +27,7 @@ export default {
             axios.delete(`${this.url}/${id}`)
                 .then(() => {
                     this.getdepositType();
-                    this.$router.push('depositType');
+                    this.$router.push({name:'depositType'});
                 })
                 .catch(error => {
                     console.error('Error deleting deposit type:', error);

@@ -40,7 +40,7 @@ export default {
             })
             .then(res =>{
                 //console.log(res)
-                this.$router.push("/dashboard/payment")
+                this.$router.push({name:'payment'})
             })
         },
     },

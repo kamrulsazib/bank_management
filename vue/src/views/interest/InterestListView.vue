@@ -64,7 +64,7 @@ export default {
                         <h4 class="m-3 table_heading">Interest List</h4>
                     </div>
                     <div class="col-md-6 text-end mt-2">
-                        <RouterLink to="interestAdd" class="btn btn-warning">Add New</RouterLink>
+                        <RouterLink :to="{name:'interestAdd'}" class="btn btn-warning">Add New</RouterLink>
                     </div>
                 </div>
 
