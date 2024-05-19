@@ -39,14 +39,14 @@
 
             <li class>
                 <RouterLink :to="{ name: 'branch' }" class="has-arrow" aria-expanded="false">
-                    <img src="/img/menu-icon/2.svg" alt="image" />
+                    <img src="/img/menu-icon/3.svg" alt="image" />
                     <span>Branches</span>
                 </RouterLink>
             </li>
 
             <li class>
-                <RouterLink :to="{ name: 'customerList' }" class="has-arrow" href="#" aria-expanded="false">
-                    <img src="/img/menu-icon/2.svg" alt="image" />
+                <RouterLink :to="{ name: 'customerList' }" class="has-arrow" aria-expanded="false">
+                    <img src="/img/menu-icon/4.svg" alt="image" />
 
                     <span>Customer</span>
                 </RouterLink>
