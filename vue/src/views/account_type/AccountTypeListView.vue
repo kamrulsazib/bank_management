@@ -20,7 +20,7 @@
                         <h4 class="m-3 table_heading">Account Type List</h4>
                     </div>
                     <div class="col-md-6 text-end mt-2">
-                        <RouterLink to="/dashboard/accountTypeAdd" class="btn btn-warning">Add New</RouterLink>
+                        <RouterLink to="accountTypeAdd" class="btn btn-warning">Add New</RouterLink>
 
                     </div>
 
@@ -83,7 +83,7 @@ export default {
             axios.delete(`${this.url}/${id}`)
                 .then(() => {
                     this.getAccountType();
-                    this.$router.push('/dashboard/accountType');
+                    this.$router.push('accountType');
                 })
                 .catch(error => {
                     console.error('Error deleting account type:', error);

@@ -73,7 +73,7 @@ export default {
             };
             axios.post(this.url, data)
             .then(res => {
-                this.$router.push('/dashboard/loan');
+                this.$router.push('loan');
             })
             .catch(error => {
                 console.error('Error fetching Loan',error);

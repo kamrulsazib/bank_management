@@ -21,7 +21,7 @@
                         <h4 class="m-3 table_heading">Loan List</h4>
                     </div>
                     <div class="col-md-6 text-end mt-2">
-                        <RouterLink to="/dashboard/loanAdd" class="btn btn-warning">Add New</RouterLink>
+                        <RouterLink to="loanAdd" class="btn btn-warning">Add New</RouterLink>
                         
                     </div>
 

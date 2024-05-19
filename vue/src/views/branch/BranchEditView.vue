@@ -98,7 +98,7 @@ export default {
             };
             axios.put(`${this.url}/${this.id}`, aldata)
                 .then(res => {
-                    this.$router.push("/dashboard/branch");
+                    this.$router.push("branch");
                 })
                 .catch(error => {
                     console.error('Error updating branch:', error);
