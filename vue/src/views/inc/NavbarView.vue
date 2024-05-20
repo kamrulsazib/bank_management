@@ -54,7 +54,6 @@
             <li >
                 <a class="has-arrow" href="#" aria-expanded="false">
                     <img src="/img/menu-icon/2.svg" alt="image" />
-
                     <span>Loan Section</span>
                 </a>
                 <ul>
