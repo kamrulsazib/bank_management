@@ -63,7 +63,7 @@ export default {
 
                 <div class="row">
                     <div class="col-md-6">
-                        <h4 class="m-3 table_heading">Account Type List</h4>
+                        <h4 class="m-3 table_heading">Customer List</h4>
                     </div>
                     <div class="col-md-6 text-end mt-2">
                         <RouterLink to="/dashboard/accountTypeAdd" class="btn btn-warning">Add New</RouterLink>

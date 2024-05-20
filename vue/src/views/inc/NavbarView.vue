@@ -72,7 +72,7 @@ export default {
                 </ul>
             </li>
             <li class>
-                <a class="has-arrow" href="#" aria-expanded="false">
+                <a class="has-arrow" aria-expanded="false">
                     <img src="/img/menu-icon/2.svg" alt="image" />
 
                     <span>Loan Section</span>
@@ -80,8 +80,8 @@ export default {
                 <ul>
                     <li>
                         <RouterLink to="/dashboard/loanType">Loan Type List</RouterLink>
-                        <RouterLink to="/dashboard/loan">Loan List</RouterLink>
                         <RouterLink to="/dashboard/loanProposal">Loan Proposal List</RouterLink>
+                        <RouterLink to="/dashboard/loan">Loan List</RouterLink>
                     </li>
                 </ul>
             </li>

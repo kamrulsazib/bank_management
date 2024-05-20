@@ -32,7 +32,7 @@
                             <th>SL</th>
                             <th>Branch Name</th>
                             <th>Address</th>
-                            <th>Asset</th>
+                            <th>Assets</th>
                             <th>DEBT</th>
                             <th>Action</th>
                         </tr>
@@ -42,6 +42,7 @@
                             <th>{{ i + 1 }}</th>
                             <td>{{ d.branch_name}}</td>
                             <td>{{ d.address}}</td>
+                            <td>{{ d.asset}}</td>
                             <td>{{ d.debt}}</td>
                             <td>
                                 <button class="btn btn-success btn-sm me-2" @click="edit(d.id)">Edit</button>
