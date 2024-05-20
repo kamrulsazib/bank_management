@@ -30,7 +30,7 @@ export default {
             axios.delete(`${this.url}/${id}`)
                 .then(() => {
                     this.getDeposit();
-                    this.$router.push('/dashboard/cashDeposit');
+                    this.$router.push({name:'cashDeposit'});
                 })
                 .catch(error => {
                     console.error('Error deleting cashDeposit', error);
@@ -66,7 +66,7 @@ export default {
                         <h4 class="m-3 table_heading">Cash Deposit List</h4>
                     </div>
                     <div class="col-md-6 text-end mt-2">
-                        <RouterLink to="/dashboard/cashDepositAdd" class="btn btn-warning">Add New</RouterLink>
+                        <RouterLink :to="{name:'cashDepositAdd'}" class="btn btn-warning">Add New</RouterLink>
                     </div>
                 </div>
                 <table class="table table-striped ">

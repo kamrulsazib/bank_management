@@ -21,7 +21,7 @@
                         <h4 class="m-3 table_heading">Deposit List</h4>
                     </div>
                     <div class="col-md-6 text-end mt-2">
-                        <RouterLink to="/dashboard/depositAdd" class="btn btn-warning">Add New</RouterLink>
+                        <RouterLink :to="{name:'depositAdd'}" class="btn btn-warning">Add New</RouterLink>
                         
                     </div>
 
@@ -89,7 +89,7 @@ export default {
             axios.delete(`${this.url}/${id}`)
                 .then(() => {
                     this.getdeposit();
-                    this.$router.push('/dashboard/deposit');
+                    this.$router.push({name:'deposit'});
                 })
                 .catch(error => {
                     console.error('Error deleting deposit', error);

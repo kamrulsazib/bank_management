@@ -27,14 +27,14 @@
 
                                 <div class="mb-3">
                                     <label for="assetsInput" class="form-label">Asset</label>
-                                    <input type="text" v-model.trim="asset" class="form-control"
+                                    <input type="number" v-model.trim="asset" class="form-control"
                                         id="assetsInput" placeholder="Enter Asset">
                                     <p v-if="assetError" class="text-danger">{{ assetError }}</p>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="debtsInput" class="form-label">DEBT</label>
-                                    <input type="text" v-model.trim="debt" class="form-control"
+                                    <input type="number" v-model.trim="debt" class="form-control"
                                         id="debtsInput" placeholder="Enter Debt">
                                     <p v-if="debtError" class="text-danger">{{ debtError }}</p>
                                 </div>
@@ -79,7 +79,7 @@ export default {
             })
                 .then(res => {
                     // console.log(res)
-                    this.$router.push("/dashboard/branch");
+                    this.$router.push("branch");
                 })
                 .catch(error => {
                     console.error("Error adding branch:", error);

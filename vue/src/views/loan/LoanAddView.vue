@@ -62,9 +62,7 @@ export default {
                 .catch(error => {
                     console.error('Error fetching Loan Proposal', error);
                 });
-
         },
-
         saveLoan() {
             const data = {
                 customer_id: this.customerId,
@@ -75,15 +73,14 @@ export default {
                 date: this.date,
             };
             axios.post(this.url, data)
-                .then(res => {
-                    this.$router.push('/dashboard/loan');
-                })
-                .catch(error => {
-                    console.error('Error fetching Loan', error);
-                });
 
+            .then(res => {
+                this.$router.push({name:'loan'});
+            })
+            .catch(error => {
+                console.error('Error fetching Loan',error);
+            });
         },
-
         clearErrors() {
                 this.customerIdError,
                 this.customerError,
