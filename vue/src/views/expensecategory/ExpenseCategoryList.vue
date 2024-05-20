@@ -20,7 +20,7 @@
                         <h4 class="m-3 table_heading">Expense Category List</h4>
                     </div>
                     <div class="col-md-6 text-end mt-2">
-                        <RouterLink to="/dashboard/expesecategoryadd" class="btn btn-warning">Add New</RouterLink>
+                        <RouterLink :to="{name:'expesecategoryadd'}" class="btn btn-warning">Add New</RouterLink>
 
                     </div>
 
@@ -84,7 +84,7 @@ export default {
             axios.delete(`${this.url}/${id}`)
                 .then(() => {
                     this.getexpensecategory();
-                    this.$router.push('/dashboard/expensecategory');
+                    this.$router.push({name:'expensecategory'});
                 })
                 .catch(error => {
                     console.error('Error deleting Expense Category:', error);

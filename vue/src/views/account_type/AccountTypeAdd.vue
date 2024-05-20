@@ -62,7 +62,7 @@ export default {
                 .then(res => {
                     this.accountType = (res.data.data)
                     console.log(res.data.data)
-                    this.$router.push("/dashboard/accountType")
+                    this.$router.push("accountType")
                 })
 
         },
