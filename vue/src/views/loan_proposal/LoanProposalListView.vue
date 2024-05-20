@@ -27,7 +27,7 @@ export default {
             axios.delete(`${this.url}/${id}`)
             .then(()=> {
                 this.getLoanProposal();
-                this.$router.push('/dashboard/loanProposal');
+                this.$router.push({name:'loanProposal'});
             })
             .catch(error => {
                 console.error('Error Deleting Loan Proposal!',error);
@@ -64,7 +64,7 @@ export default {
                         <h4 class="m-3 table_heading">Loan Proposal List</h4>
                     </div>
                     <div class="col-md-6 text-end mt-2">
-                        <RouterLink to="/dashboard/loanProposalAdd" class="btn btn-warning">Add New</RouterLink>
+                        <RouterLink :to="{name:'loanProposalAdd'}" class="btn btn-warning">Add New</RouterLink>
                     </div>
 
                 </div>

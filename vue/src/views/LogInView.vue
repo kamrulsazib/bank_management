@@ -23,7 +23,7 @@
                           <div class>
                             <input type="password" class="form-control" placeholder="Password">
                           </div>
-                          <a href="#" class="btn_1 full_width text-center">Log in</a>
+                          <a href="admin/dashboard" class="btn_1 full_width text-center">Log in</a>
                           <p>Need an account? <RouterLink to="signup"> Sign Up</RouterLink></p>
                           <div class="text-center">
                             <a href="#" data-bs-toggle="modal" data-bs-target="#forgot_password" data-bs-dismiss="modal"

@@ -21,7 +21,7 @@
                         <h4 class="m-3 table_heading">Loan List</h4>
                     </div>
                     <div class="col-md-6 text-end mt-2">
-                        <RouterLink to="/dashboard/loanAdd" class="btn btn-warning">Add New</RouterLink>
+                        <RouterLink :to="{name:'loanAdd'}" class="btn btn-warning">Add New</RouterLink>
                         
                     </div>
 
@@ -31,6 +31,7 @@
                     <thead class="table_color">
                         <tr>
                             <th scope="col">SL</th>
+                            <th scope="col">Customer ID</th>
                             <th scope="col">Customer Name</th>
                             <th scope="col">Loan Type</th>
                             <th scope="col">Loan Proposal Amount</th>
@@ -42,6 +43,7 @@
                     <tbody>
                         <tr v-for="(d,i) in loan" :key="i">
                             <th>{{ i + 1 }}</th>
+                            <th>{{d.customer_id}}</th>
                             <th>{{d.customer.customer_name}}</th>
                             <th>{{d.loan_type.loan_type}}</th>
                             <th>{{d.loan_proprosal.amount}}</th>
@@ -90,7 +92,7 @@ export default {
             axios.delete(`${this.url}/${id}`)
             .then(()=> {
                 this.getLoan();
-                this.$router.push('/dashboard/loan');
+                this.$router.push({name:'loan'});
             })
             .catch(error => {
                 console.error('Error Deleting Loan!',error);

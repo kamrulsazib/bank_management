@@ -20,7 +20,7 @@
                         <h4 class="m-3 table_heading">Branch List</h4>
                     </div>
                     <div class="col-md-6 text-end mt-2">
-                        <RouterLink to="/dashboard/branchAdd" class="btn btn-warning">Add New</RouterLink>
+                        <RouterLink :to="{name:'branchAdd'}" class="btn btn-warning">Add New</RouterLink>
 
                     </div>
 
@@ -32,7 +32,7 @@
                             <th>SL</th>
                             <th>Branch Name</th>
                             <th>Address</th>
-                            <th>Asset</th>
+                            <th>Assets</th>
                             <th>DEBT</th>
                             <th>Action</th>
                         </tr>
@@ -42,6 +42,7 @@
                             <th>{{ i + 1 }}</th>
                             <td>{{ d.branch_name}}</td>
                             <td>{{ d.address}}</td>
+                            <td>{{ d.asset}}</td>
                             <td>{{ d.debt}}</td>
                             <td>
                                 <button class="btn btn-success btn-sm me-2" @click="edit(d.id)">Edit</button>
@@ -89,7 +90,7 @@ export default {
             axios.delete(`${this.url}/${id}`)
                 .then(() => {
                     this.getbranch();
-                    this.$router.push('/dashboard/branch');
+                    this.$router.push({name:'branch'});
                 })
                 .catch(error => {
                     console.error('Error deleting branch Type:', error);

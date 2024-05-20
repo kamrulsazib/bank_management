@@ -33,7 +33,7 @@ export default {
                 interest_rate: this.interest_rate
             })
             .then(res =>{
-                this.$router.push("/dashboard/interest")
+                this.$router.push("interest")
             })
         }
     },
