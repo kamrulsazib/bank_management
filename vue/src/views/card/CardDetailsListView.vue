@@ -29,7 +29,7 @@ export default {
         axios.delete(`${this.url}/${id}`)
           .then(() => {
             this.getcard();
-            this.$router.push('/dashboard/cardDetails');
+            this.$router.push({name:'cardDetails'});
           })
           .catch(error => {
             console.error('Error deleting card', error);
@@ -65,7 +65,7 @@ export default {
                         <h4 class="m-3 table_heading">Card Details List</h4>
                     </div>
                     <div class="col-md-6 text-end mt-2">
-                        <RouterLink to="/dashboard/cardDetailsAdd" class="btn btn-warning">Add New</RouterLink>
+                        <RouterLink :to="{name:'cardDetailsAdd'}" class="btn btn-warning">Add New</RouterLink>
 
                     </div>
 
