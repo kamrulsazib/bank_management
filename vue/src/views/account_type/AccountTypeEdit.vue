@@ -1,8 +1,6 @@
 <template>
     <main>
         <NavbarViewVue />
-
-        <section class="main_content dashboard_part">
             <div class="container card mt-5 ms-2">
                 <div class="row justify-content-center">
                     <div class="col-md-6">
@@ -20,14 +18,10 @@
                                 </p>
                             </div>
                             <button type="submit" @click="updateAccountType" class="btn btn-primary">Submit</button>
-                            <!-- </form> -->
-
                         </div>
                     </div>
                 </div>
-
             </div>
-        </section>
     </main>
 </template>
 

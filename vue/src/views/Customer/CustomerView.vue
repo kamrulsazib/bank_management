@@ -20,7 +20,7 @@ export default {
             axios.get(`${this.url}`)
                 .then(res => {
                     this.customer = (res.data.data)
-                    // console.log(res.data.data)
+                    console.log(res.data.data)
                 })
 
         },
@@ -47,7 +47,6 @@ export default {
 <template>
     <main>
         <NavbarView />
-        <section class="main_content dashboard_part">
             <div class="container card card-body mt-5 ms-2">
                 <div class="row">
                     <div class="col-md-4">
@@ -66,7 +65,7 @@ export default {
                         <h4 class="m-3 table_heading">Customer List</h4>
                     </div>
                     <div class="col-md-6 text-end mt-2">
-                        <RouterLink :to="{name:'accountTypeAdd'}" class="btn btn-warning">Add New</RouterLink>
+                        <RouterLink :to="{name:'customerAdd'}" class="btn btn-warning">Add New</RouterLink>
 
                     </div>
 
@@ -76,44 +75,36 @@ export default {
                     <thead class="table_color">
                         <tr>
                             <th>SL</th>
+                            <th>Photo</th>
                             <th>name</th>
                             <th>Email</th>
                             <th>Phone</th>
                             <th>Address</th>
-                            <th>NID Number</th>
+                            <th>NID</th>
                             <th>Date of Birth</th>
-                            <th>Nominee Name</th>
-                            <th>Nominee Phone</th>
-                            <th>Nominee NID</th>
-                            <th>Document</th>
                             <th>Account Type</th>
-                            <th>Photo</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr v-for="(d, i) in customer" :key="i">
                             <th>{{ i + 1 }}</th>
+                            <td> <img height="50px" :src="`http://127.0.0.1:8000/storage/${d.photo}`"  alt=""></td>
                             <td>{{ d.customer_name }}</td>
                             <td>{{ d.email }}</td>
                             <td>{{ d.mobile }}</td>
                             <td>{{ d.address }}</td>
-                            <td>{{ d.photo }}</td>
                             <td>{{ d.nid_number }}</td>
                             <td>{{ d.date_of_birth }}</td>
-                            <td>{{ d.nominee_name }}</td>
-                            <td>{{ d.nominee_mobile }}</td>
-                            <td>{{ d.nominee_nid_number }}</td>
-                            <td>{{ d.document }}</td>
-                            <td>{{ d.account_type_id }}</td>
+                            <td>{{ d.account_type.account_type }}</td>
                             <td>
-                                <button class="btn btn-success btn-sm me-2" @click="edit(d.id)">Edit</button>
+                                <button class="btn btn-success btn-sm me-2" @click="edit(d.id)">Edit</button>&nbsp;
                                 <button class="btn btn-danger btn-sm" @click="accountTypeDelete(d.id)">Delete</button>
+                           
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-        </section>
     </main>
 </template>
