@@ -16,7 +16,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $customer = Customer::get();
+        $customer = Customer::with('accountType')->get();
         return $this->sendResponse($customer, 'customer Return fetched successfully');
     }
 
@@ -75,8 +75,6 @@ class CustomerController extends Controller
         $password = $request->password;
         $photo = $path . $filename;
         // $designation ="customer";
-
-
 
         $customer = Customer::create(['customer_name' => $customer_name, 'email' => $email, 'mobile' => $mobile, 'address' => $address, 'nid_number' => $nid_number, 'date_of_birth' => $date_of_birth, 'nominee_name' => $nominee_name, 'nominee_mobile' => $nominee_mobile, 'nominee_nid_number' => $nominee_nid_number, 'document' => $document, 'account_type_id' => $account_type_id, 'password' => $password, 'photo' => $photo,]);
 

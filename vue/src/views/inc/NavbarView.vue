@@ -51,39 +51,16 @@
                     <span>Customer</span>
                 </RouterLink>
             </li>
-<<<<<<< HEAD
-<<<<<<< HEAD
-            <li class>
+            <li>
                 <a class="has-arrow" aria-expanded="false">
-=======
-            <li >
-                <a class="has-arrow" href="#" aria-expanded="false">
->>>>>>> d7c5e39b553b68d30969f0968b6529ad5f424dd8
-=======
-            <li >
-                <a class="has-arrow" href="#" aria-expanded="false">
->>>>>>> 5fdf1a1096f0d4391786f22942b40b1a1fade0cd
                     <img src="/img/menu-icon/2.svg" alt="image" />
                     <span>Loan Section</span>
                 </a>
                 <ul>
-<<<<<<< HEAD
-<<<<<<< HEAD
                     <li>
-                        <RouterLink to="/dashboard/loanType">Loan Type List</RouterLink>
-                        <RouterLink to="/dashboard/loanProposal">Loan Proposal List</RouterLink>
-                        <RouterLink to="/dashboard/loan">Loan List</RouterLink>
-=======
-=======
->>>>>>> 5fdf1a1096f0d4391786f22942b40b1a1fade0cd
-                    <li >
-                        <RouterLink :to="{name: 'loanType'}">Loan Type List</RouterLink>
-                        <RouterLink :to="{name: 'loan'}">Loan List</RouterLink>
-                        <RouterLink :to="{name: 'loanProposal'}">Loan Proposal List</RouterLink>
-<<<<<<< HEAD
->>>>>>> d7c5e39b553b68d30969f0968b6529ad5f424dd8
-=======
->>>>>>> 5fdf1a1096f0d4391786f22942b40b1a1fade0cd
+                        <RouterLink :to="{ name: 'loanType' }">Loan Type List</RouterLink>
+                        <RouterLink :to="{ name: 'loan' }">Loan List</RouterLink>
+                        <RouterLink :to="{ name: 'loanProposal' }">Loan Proposal List</RouterLink>
                     </li>
                 </ul>
             </li>
@@ -95,7 +72,7 @@
                 </a>
                 <ul>
                     <li>
-                        <RouterLink :to="{name: 'depositType'}">Deposit Type List</RouterLink>
+                        <RouterLink :to="{ name: 'depositType' }">Deposit Type List</RouterLink>
                         <RouterLink :to="{ name: 'deposit' }">Deposit List</RouterLink>
                     </li>
                 </ul>

@@ -292,6 +292,11 @@ const router = createRouter({
                     component: () =>import ("@/views/Customer/CustomerView.vue"),
                 },
                 {
+                    path: 'customerAdd',
+                    name: 'customerAdd',
+                    component: () =>import ("@/views/Customer/CustomerAdd.vue"),
+                },
+                {
                     path: 'cardType',
                     name: 'cardType',
                     component: CardTypeListView

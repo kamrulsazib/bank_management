@@ -29,8 +29,8 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 
-Route::resource('account',AccountController::class)->names('accountType');
-Route::resource('accountType',AccountTypeController::class)->names('account');
+Route::resource('account',AccountController::class)->names('account');
+Route::resource('accountType',AccountTypeController::class)->names(' accountType');
 Route::resource('expensecategory',ExpenseCategoryController::class)->names('expensecategory');
 Route::resource('expense',ExpenseController::class)->names('expense');
 Route::resource('employeeType',EmployeeTypeController::class)->names('employeeType');

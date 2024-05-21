@@ -7,7 +7,9 @@ import Footer from './inc/Footer.vue';
     <section class="main_content dashboard_part">
         <Header />
         <NavbarView />
-        <router-view />
+                <router-view />
+         
+        
         <Footer />
     </section>
 </template>
