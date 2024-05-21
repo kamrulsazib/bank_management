@@ -11,6 +11,17 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-3">
+                                        <label for="name" class="form-label">Account Number</label>
+                                        <input type="text" v-model="account_number" class="form-control" id="name"
+                                            placeholder="Enter Your Name" readonly>
+                                        <p style="color:red" v-if="nameError">
+                                            {{ nameError }}
+                                        </p>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
                                         <label for="name" class="form-label">Name</label>
                                         <input type="text" v-model="name" class="form-control" id="name"
                                             placeholder="Enter Your Name">
@@ -194,6 +205,7 @@ export default {
             url: 'http://127.0.0.1:8000/api/customer',
             accountType: '',
             selectedAccountType: '',
+            account_number: '',
             name: '',
             email: '',
             phone: '',
@@ -223,9 +235,15 @@ export default {
     },
     mounted() {
         this.getAccountType();
+        this.generateAccountNumber();
 
     },
     methods: {
+        generateAccountNumber() {
+          const randomNumber = Math.floor(Math.random() * 1000000000);
+          const paddedNumber = randomNumber.toString().padStart(10, '0');
+          this.account_number = 'ACCT-' + paddedNumber;
+        },
         getAccountType() {
             axios.get('http://127.0.0.1:8000/api/accountType')
                 .then(res => {
@@ -242,6 +260,7 @@ export default {
         savaCustomer() {
             let formData = new FormData();
             const hashedPassword = this.hash(this.password);
+            formData.append('account_number', this.account_number);
             formData.append('customer_name', this.name);
             formData.append('email', this.email);
             formData.append('mobile', this.phone);
@@ -260,7 +279,7 @@ export default {
             axios.post(`${this.url}`, formData)
                 .then(res => {
                      console.log(res)
-                    //this.$router.push({name:"customerList"})
+                    this.$router.push({name:"customerList"})
                 })
                 .catch(error => {
                     console.error(error);

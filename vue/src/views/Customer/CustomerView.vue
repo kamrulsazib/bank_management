@@ -75,6 +75,7 @@ export default {
                     <thead class="table_color">
                         <tr>
                             <th>SL</th>
+                            <th>Account Number</th>
                             <th>Photo</th>
                             <th>name</th>
                             <th>Email</th>
@@ -88,8 +89,10 @@ export default {
                     </thead>
                     <tbody>
                         <tr v-for="(d, i) in customer" :key="i">
-                            <th>{{ i + 1 }}</th>
+                            <th>{{ ++i }}</th>
+                            <td>{{ d.account_number }}</td>
                             <td> <img height="50px" :src="`http://127.0.0.1:8000/storage/${d.photo}`"  alt=""></td>
+                            
                             <td>{{ d.customer_name }}</td>
                             <td>{{ d.email }}</td>
                             <td>{{ d.mobile }}</td>
