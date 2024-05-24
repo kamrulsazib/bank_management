@@ -20,7 +20,7 @@
                         <h4 class="m-3 table_heading">Expense List</h4>
                     </div>
                     <div class="col-md-6 text-end mt-2">
-                        <RouterLink to="/dashboard/expenseadd" class="btn btn-warning">Add New</RouterLink>
+                        <RouterLink :to="{name:'expenseadd'}" class="btn btn-warning">Add New</RouterLink>
 
                     </div>
 

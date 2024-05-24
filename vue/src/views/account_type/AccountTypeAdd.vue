@@ -1,8 +1,6 @@
 <template>
     <main>
         <NavbarViewVue />
-
-        <section class="main_content dashboard_part">
             <div class="container card mt-5 ms-2">
                 <div class="row justify-content-center">
                     <div class="col-md-6">
@@ -25,9 +23,7 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-        </section>
     </main>
 </template>
 
@@ -62,7 +58,7 @@ export default {
                 .then(res => {
                     this.accountType = (res.data.data)
                     console.log(res.data.data)
-                    this.$router.push("/dashboard/accountType")
+                    this.$router.push("accountType")
                 })
 
         },

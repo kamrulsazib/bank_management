@@ -31,7 +31,7 @@ export default {
                 deposit_type: this.deposit_type
             })
                 .then(res => {
-                    this.$router.push("/dashboard/depositType")
+                    this.$router.push("depositType")
                 })
         },
 

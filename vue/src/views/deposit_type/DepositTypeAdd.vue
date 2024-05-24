@@ -24,7 +24,7 @@ export default {
                 .then(res => {
                     this.depositType = (res.data.data)
                     console.log(res.data.data)
-                    this.$router.push("/dashboard/depositType")
+                    this.$router.push("depositType")
                 })
 
         },

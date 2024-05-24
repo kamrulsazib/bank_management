@@ -1,7 +1,6 @@
 <template>
     <main>
         <NavbarViewVue/>
-        <section class="main_content dashboard_part">
             <div class="container card card-body mt-5 ms-2">
                 <div class="row">
                     <div class="col-md-4">
@@ -20,19 +19,17 @@
                         <h4 class="m-3 table_heading">Branch List</h4>
                     </div>
                     <div class="col-md-6 text-end mt-2">
-                        <RouterLink to="/dashboard/branchAdd" class="btn btn-warning">Add New</RouterLink>
+                        <RouterLink :to="{name:'branchAdd'}" class="btn btn-warning">Add New</RouterLink>
 
                     </div>
-
                 </div>
-
                 <table class="table table-striped ">
                     <thead class="table_color">
                         <tr>
                             <th>SL</th>
                             <th>Branch Name</th>
                             <th>Address</th>
-                            <th>Asset</th>
+                            <th>Assets</th>
                             <th>DEBT</th>
                             <th>Action</th>
                         </tr>
@@ -42,6 +39,7 @@
                             <th>{{ i + 1 }}</th>
                             <td>{{ d.branch_name}}</td>
                             <td>{{ d.address}}</td>
+                            <td>{{ d.asset}}</td>
                             <td>{{ d.debt}}</td>
                             <td>
                                 <button class="btn btn-success btn-sm me-2" @click="edit(d.id)">Edit</button>
@@ -51,7 +49,6 @@
                     </tbody>
                 </table>
             </div>
-        </section>
     </main>
 
 </template>
@@ -89,7 +86,7 @@ export default {
             axios.delete(`${this.url}/${id}`)
                 .then(() => {
                     this.getbranch();
-                    this.$router.push('/dashboard/branch');
+                    this.$router.push({name:'branch'});
                 })
                 .catch(error => {
                     console.error('Error deleting branch Type:', error);
