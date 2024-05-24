@@ -14,7 +14,7 @@
                                             </div>
                                             <div class="count_content">
                                                 <h3><span class="counter">520</span></h3>
-                                                <p>Doctors</p>
+                                                <p>Transaction</p>
                                             </div>
                                         </div>
                                         <div class="single_quick_activity d-flex">
