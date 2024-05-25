@@ -16,7 +16,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $customer = Customer::get();
+        $customer = Customer::with('accountType')->get();
         return $this->sendResponse($customer, 'customer Return fetched successfully');
     }
 
@@ -34,8 +34,9 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
+            'account_number' => 'required|unique:customers,account_number',
             'customer_name' => 'required',
-            'email' => 'required',
+            'email' => 'required|email|unique:customers,email',
             'mobile' => 'required',
             'address' => 'required',
             'photo' => 'required',
@@ -61,6 +62,7 @@ class CustomerController extends Controller
         }
 
         $input = $request->all();
+        $account_number = $request->account_number;
         $customer_name = $request->customer_name;
         $email = $request->email;
         $mobile = $request->mobile;
@@ -76,9 +78,7 @@ class CustomerController extends Controller
         $photo = $path . $filename;
         // $designation ="customer";
 
-
-
-        $customer = Customer::create(['customer_name' => $customer_name, 'email' => $email, 'mobile' => $mobile, 'address' => $address, 'nid_number' => $nid_number, 'date_of_birth' => $date_of_birth, 'nominee_name' => $nominee_name, 'nominee_mobile' => $nominee_mobile, 'nominee_nid_number' => $nominee_nid_number, 'document' => $document, 'account_type_id' => $account_type_id, 'password' => $password, 'photo' => $photo,]);
+        $customer = Customer::create(['account_number' => $account_number, 'customer_name' => $customer_name, 'email' => $email, 'mobile' => $mobile, 'address' => $address, 'nid_number' => $nid_number, 'date_of_birth' => $date_of_birth, 'nominee_name' => $nominee_name, 'nominee_mobile' => $nominee_mobile, 'nominee_nid_number' => $nominee_nid_number, 'document' => $document, 'account_type_id' => $account_type_id, 'password' => $password, 'photo' => $photo,]);
 
         User::create(['name' => $customer_name, 'email' => $email, 'password' => $password,]);
         return $this->sendResponse($customer, 'customer created successfully!');

@@ -20,6 +20,7 @@ export default {
             axios.get(`${this.url}`)
                 .then(res => {
                     this.LoanProposal = (res.data.data)
+                    console.log(res.data.data)
                 })
 
         },
@@ -27,7 +28,7 @@ export default {
             axios.delete(`${this.url}/${id}`)
             .then(()=> {
                 this.getLoanProposal();
-                this.$router.push('/dashboard/loanProposal');
+                this.$router.push({name:'loanProposal'});
             })
             .catch(error => {
                 console.error('Error Deleting Loan Proposal!',error);
@@ -45,7 +46,6 @@ export default {
     <main>
         <NavbarViewVue/>
         
-        <section class="main_content dashboard_part">
             <div class="container card card-body mt-5 ms-2">
 
                 <div class="row">
@@ -64,7 +64,7 @@ export default {
                         <h4 class="m-3 table_heading">Loan Proposal List</h4>
                     </div>
                     <div class="col-md-6 text-end mt-2">
-                        <RouterLink to="/dashboard/loanProposalAdd" class="btn btn-warning">Add New</RouterLink>
+                        <RouterLink :to="{name:'loanProposalAdd'}" class="btn btn-warning">Add New</RouterLink>
                     </div>
 
                 </div>
@@ -73,22 +73,26 @@ export default {
                     <thead class="table_color">
                         <tr>
                             <th scope="col">SL</th>
+                            <th scope="col">A/C Number</th>
                             <th scope="col">Customer Name</th>
                             <th scope="col">Loan Type</th>
                             <th scope="col">Amount</th>
                             <th scope="col">Date</th>
                             <th scope="col">Tenure(Month)</th>
+                            <th scope="col">Status</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr v-for="(d,i) in LoanProposal" :key="i">
                             <th>{{i + 1}}</th>
+                            <th>{{d.customer.account_number}}</th>
                             <th>{{d.customer.customer_name}}</th>
                             <th>{{d.loan_type.loan_type}}</th>
                             <th>{{d.amount}}</th>
                             <th>{{d.date}}</th>
                             <th>{{d.tenure}}</th>
+                            <th>{{d.status}}</th>
                             <td>
                                 <button class="btn btn-success btn-sm me-2" @click="edit(d.id)">Edit</button>
                                 <button class="btn btn-danger btn-sm" @click="loanProposalDelete(d.id)">Delete</button>
@@ -97,7 +101,6 @@ export default {
                     </tbody>
                 </table>
             </div>
-        </section>
     </main>
 
 </template>

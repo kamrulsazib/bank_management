@@ -20,7 +20,7 @@
                         <h4 class="m-3 table_heading">Employee List</h4>
                     </div>
                     <div class="col-md-6 text-end mt-2">
-                        <RouterLink to="/dashboard/employeeadd" class="btn btn-warning">Add New</RouterLink>
+                        <RouterLink :to="{name:'employeeadd'}" class="btn btn-warning">Add New</RouterLink>
                     </div>
 
                 </div>
@@ -89,7 +89,7 @@ export default {
             axios.delete(`${this.url}/${id}`)
                 .then(() => {
                     this.getemployee();
-                    this.$router.push('/dashboard/employee');
+                    this.$router.push({name:'employee'});
                 })
                 .catch(error => {
                     console.error('Error deleting employee !', error);

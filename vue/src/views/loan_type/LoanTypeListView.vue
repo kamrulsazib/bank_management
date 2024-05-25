@@ -28,7 +28,7 @@ export default {
             axios.delete(`${this.url}/${id}`)
                 .then(() => {
                     this.getLoanType();
-                    this.$router.push('/dashboard/loanType');
+                    this.$router.push({name:'loanType'});
                 })
                 .catch(error => {
                     console.error('Error deleting loan type:', error);
@@ -48,9 +48,7 @@ export default {
     <main>
         <NavbarViewVue/>
         
-        <section class="main_content dashboard_part">
             <div class="container card card-body mt-5 ms-2">
-
                 <div class="row">
                     <div class="col-md-4">
                         <div class="input-group rounded">
@@ -67,7 +65,7 @@ export default {
                         <h4 class="m-3 table_heading">Loan Type List</h4>
                     </div>
                     <div class="col-md-6 text-end mt-2">
-                        <RouterLink to="/dashboard/loanTypeAdd" class="btn btn-warning">Add New</RouterLink>
+                        <RouterLink :to="{name:'loanTypeAdd'}" class="btn btn-warning">Add New</RouterLink>
                         
                     </div>
 
@@ -93,7 +91,6 @@ export default {
                     </tbody>
                 </table>
             </div>
-        </section>
     </main>
 
 </template>

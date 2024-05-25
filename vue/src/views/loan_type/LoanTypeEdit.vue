@@ -34,7 +34,7 @@ export default {
                 loan_type: this.loan_type
             })
                 .then(res => {
-                    this.$router.push("/dashboard/loanType")
+                    this.$router.push({name:'loanType'})
                 })
 
         },
