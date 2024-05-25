@@ -104,7 +104,6 @@ export default {
                             <h4 class=" table_heading">Add Loan</h4>
                         </div>
                         <div class="card-body">
-
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-3">

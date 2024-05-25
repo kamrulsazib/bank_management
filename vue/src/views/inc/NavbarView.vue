@@ -51,16 +51,16 @@
                     <span>Customer</span>
                 </RouterLink>
             </li>
-            <li >
-                <a class="has-arrow" href="#" aria-expanded="false">
+            <li>
+                <a class="has-arrow" aria-expanded="false">
                     <img src="/img/menu-icon/2.svg" alt="image" />
                     <span>Loan Section</span>
                 </a>
                 <ul>
-                    <li >
-                        <RouterLink :to="{name: 'loanType'}">Loan Type List</RouterLink>
-                        <RouterLink :to="{name: 'loan'}">Loan List</RouterLink>
-                        <RouterLink :to="{name: 'loanProposal'}">Loan Proposal List</RouterLink>
+                    <li>
+                        <RouterLink :to="{ name: 'loanType' }">Loan Type List</RouterLink>
+                        <RouterLink :to="{ name: 'loan' }">Loan List</RouterLink>
+                        <RouterLink :to="{ name: 'loanProposal' }">Loan Proposal List</RouterLink>
                     </li>
                 </ul>
             </li>
@@ -72,7 +72,7 @@
                 </a>
                 <ul>
                     <li>
-                        <RouterLink :to="{name: 'depositType'}">Deposit Type List</RouterLink>
+                        <RouterLink :to="{ name: 'depositType' }">Deposit Type List</RouterLink>
                         <RouterLink :to="{ name: 'deposit' }">Deposit List</RouterLink>
                     </li>
                 </ul>
