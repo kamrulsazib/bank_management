@@ -97,7 +97,6 @@ export default {
     <main>
         <NavbarViewVue />
 
-        <section class="main_content dashboard_part">
             <div class="container card mt-5 ms-2">
                 <div class="row justify-content-center">
                     <div class="col-md-12">
@@ -157,12 +156,9 @@ export default {
                                 </div>
                             </div>
                             <button @click="saveLoan" type="submit" class="btn btn-primary">Submit</button>
-
                         </div>
                     </div>
                 </div>
-
             </div>
-        </section>
     </main>
 </template>
