@@ -37,15 +37,6 @@ export default {
             })
         }
     },
-    // watch: {
-    //     'name': function () {
-    //         if (this.name.length < 1) {
-    //             this.nameError = 'Interest rate is required'
-    //         } else {
-    //             this.nameError = ''
-    //         }
-    //     }
-    // }
 }
 </script>
 

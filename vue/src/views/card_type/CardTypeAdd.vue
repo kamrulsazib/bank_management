@@ -59,7 +59,7 @@ export default {
                 .then(res => {
                     // this.cardType = (res.data.data)
                     console.log(res.data.data)
-                    // this.$router.push("/dashboard/cardType")
+                    this.$router.push({name:"cardType"})
                 })
 
         },

@@ -86,8 +86,8 @@ export default {
         loanDelete(id){
             axios.delete(`${this.url}/${id}`)
             .then(()=> {
-                this.getLoan();
-                this.$router.push({name:'loan'});
+                this.getloan()
+                // this.$router.push({name:'loan'});
             })
             .catch(error => {
                 console.error('Error Deleting Loan!',error);

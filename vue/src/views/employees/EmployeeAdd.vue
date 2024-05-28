@@ -82,6 +82,7 @@ export default {
             axios.get('http://127.0.0.1:8000/api/employeeType')
                 .then(res => {
                     this.employeeType = res.data.data;
+                    
                 })
                 .catch(error => {
                     console.error('Error fetching employee types:', error);
@@ -120,7 +121,7 @@ export default {
             };
             axios.post(this.url, data)
             .then(res => {
-                this.$router.push("/dashboard/employee");
+                this.$router.push({name:"employee"});
             })
             .catch(error => {
                 console.error('Error adding employee:', error);

@@ -1,7 +1,6 @@
 <template>
     <main>
         <NavbarViewVue />
-
         <div class="container card mt-5 ms-2">
             <div class="row justify-content-center">
                 <div class="col-md-12">
@@ -18,6 +17,7 @@
                                     <p style="color:red" v-if="accountNumberError">{{ accountNumberError }}</p>
                                 </div>
                                 <div class="mb-3">
+
                                     <label for="exampleInputEmail1" class="form-label">Customer Name</label>
                                     <select v-model="selectCustomer" class="form-select col-md-10">
                                         <option value="">Customer Name</option>
@@ -35,15 +35,18 @@
                                     </select>
                                     <p style="color:red" v-if="loanTypeError">{{ loanTypeError }}</p>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Amount</label>
                                     <input type="text" v-model="amount" class="form-control"
                                         placeholder="Enter Loan Proposan Amount">
                                     <p style="color:red" v-if="amountError">{{ amountError }}</p>
+
                                 </div>
+                            </div>
+                            <div class="col-md-6">
                                 <div class="mb-3">
+
+
                                     <label for="exampleInputEmail1" class="form-label">Date</label>
                                     <input v-model="date" type="date" class="form-control"
                                         placeholder="Enter Deposit Date">
@@ -51,7 +54,18 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label"> Tenure(Month)</label>
-                                    <input type="text" v-model="tenure" class="form-control" placeholder="Enter Tenure">
+                                    <input type="text" v-model="tenure" class="form-control" placeholder="Enter Amount">
+                                    <p style="color:red" v-if="tenureError">{{ tenureError }}</p>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Status</label>
+                                    <!-- <input type="text" v-model="status" class="form-control" placeholder="Enter Amount"> -->
+                                    <select v-model="status" class="form-control" name="" id="">
+                                        <option value="success">success</option>
+                                        <option value="pending">pending</option>
+                                        <option value="cancel">cancel</option>
+                                    </select>
+
                                     <p style="color:red" v-if="tenureError">{{ tenureError }}</p>
                                 </div>
                             </div>
@@ -61,6 +75,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </main>
 </template>
@@ -85,12 +100,12 @@ export default {
             date: '',
             tenure: '',
             loanPorosal: '',
-            accountNumberError: '',
             customerError: '',
             loanTypeError: '',
             amountError: '',
             dateError: '',
             tenureError: '',
+            status: '',
             id: this.$route.params.id,
 
 
@@ -132,19 +147,19 @@ export default {
                     this.amount = dt.amount;
                     this.date = dt.date;
                     this.tenure = dt.tenure
-
-                    console.log(res.data.data);
+                    this.status = dt.status
+                    console.log(dt);
                 })
         },
 
         updatedLoanProposal() {
             const data = {
-                customer_id: this.accountNumber,
                 customer_id: this.selectCustomer,
                 loan_type_id: this.selectLoanType,
                 amount: this.amount,
                 date: this.date,
-                tenure: this.tenure
+                tenure: this.tenure,
+                status: this.status
             };
             axios.put(`${this.url}/${this.id}`, data)
                 .then(res => {

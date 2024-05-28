@@ -4271,7 +4271,7 @@ body::-webkit-scrollbar {
     padding-top: 6px;
     background: 0 0;
     padding-left: 270px;
-    position: absolute;
+    position: relative;
     left: 0;
     right: 0;
     bottom: 0
@@ -6051,7 +6051,7 @@ canvas#highlights {
 
 .profile-cart_2::after {
     content: " ";
-    background-image: linear-gradient(135deg, #2DAAB8 10%, #2DAAB8 100%);
+    /* background-image: linear-gradient(135deg, #2DAAB8 10%, #2DAAB8 100%); */
     clip-path: circle(50% at 50% 1%);
     display: block;
     min-height: 500px;
@@ -6070,11 +6070,11 @@ canvas#highlights {
 }
 
 .profile-cart_2 img {
-    width: 100px!important;
-    height: 100px!important;
+    width: 150px!important;
+    height: 150px!important;
     position: absolute;
     top: 78px;
-    left: 37%;
+    left: 45%;
     z-index: 99999999;
     transition: 2s;
     border-radius: 100%

@@ -76,12 +76,12 @@ export default {
                 tenure: this.tenure
             };
             axios.post(this.url, allData)
-                .then(res => {
-                    this.$router.push({ name: 'loanProposal' });
-                })
-                .catch(error => {
-                    console.error('Error fetching loanProposal', error);
-                });
+            .then(res => {
+                this.$router.push({name:'loanProposal'});
+            })
+            .catch(error => {
+                console.error('Error fetching loanProposal',error);
+            });
 
         },
 
@@ -96,28 +96,20 @@ export default {
 
     },
 }
-
 </script>
 <template>
     <main>
         <NavbarViewVue />
-
-        <div class="container card mt-5 ms-2">
-            <div class="row justify-content-center">
-                <div class="col-md-12">
-                    <div class="card-header mt-5">
-                        <h4 class=" table_heading">Add Loan Proposal</h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="exampleInputEmail1" class="form-label">A/C Number</label>
-                                    <input type="text" v-model="accountNumber" class="form-control"
-                                        placeholder="Enter A/C Number" v-on:focusout="getwithnumber($event)">
-                                    <p style="color:red" v-if="accountNumberError">{{ accountNumberError }}</p>
-                                </div>
-                                <div class="mb-3">
+            <div class="container card mt-5 ms-2">
+                <div class="row justify-content-center">
+                    <div class="col-md-12">
+                        <div class="card-header mt-5">
+                            <h4 class=" table_heading">Add Loan Proposal</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Customer Name</label>
                                     <!-- <input type="text" v-model="cusid" class="form-control" value="cusname"
                                         placeholder="Customer Name"> -->

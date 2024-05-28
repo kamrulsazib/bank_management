@@ -40,7 +40,7 @@ export default {
             })
             .then(res => {
                 console.log(res)
-                    this.$router.push("/dashboard/withdrawal")
+                    this.$router.push({name:"withdrawal"})
                 })
         },
 
@@ -59,8 +59,6 @@ export default {
 
 <template>
     <main>
-        <NavbarViewVue/>
-        <section class="main_content dashboard_part">
             <div class="container card mt-5 ms-2">
                 <div class="row justify-content-center">
                     <div class="col-md-6">
@@ -106,8 +104,6 @@ export default {
                         </div>
                     </div>
                 </div>
-
             </div>
-        </section>
     </main>
 </template>

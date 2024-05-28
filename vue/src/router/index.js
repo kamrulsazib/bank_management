@@ -57,298 +57,324 @@ import InterestAdd from '@/views/interest/InterestAdd.vue'
 import PaymentEdit from '@/views/payment/PaymentEdit.vue'
 import Admin from '@/views/Admin.vue'
 
-
-
 const router = createRouter({
-    history: createWebHistory(
-        import.meta.env.BASE_URL),
-    routes: [{
-            path: '/',
-            name: 'login',
-            component: LogInView
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes: [
+    {
+      path: '',
+      name: 'home',
+      component: () => import('@/views/HomeView.vue'),
+      children: [
+        {
+          path: '',
+          name: 'homes',
+          component: () => import('@/views/home/Home.vue')
         },
         {
-            path: '/signup',
-            name: 'signup',
-            component: SignUpView
+          path: 'account',
+          name: 'account',
+          component: () => import('@/views/home/Profile.vue'),
+          children: [
+            {
+              path: 'CloanProposalAdd',
+              name: 'CloanProposalAdd',
+              component: () => import('@/views/home/LoanProposalAdd.vue')
+            },
+            {
+              path: 'cwithdrawalAdd',
+              name: 'cwithdrawalAdd',
+              component: () => import('@/views/home/WithdrawalAdd.vue')
+            }
+          ]
+        }
+      ]
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: LogInView
+    },
+    {
+      path: '/signup',
+      name: 'signup',
+      component: SignUpView
+    },
+    {
+      path: '/admin',
+      name: 'admin',
+      component: Admin,
+      children: [
+        {
+          path: 'dashboard',
+          name: 'dashboard',
+          component: () => import('@/views/DashboardView.vue')
         },
         {
-            path: '/admin',
-            name: 'admin',
-            component: Admin,
-            children: [{
-                    path: 'dashboard',
-                    name: 'dashboard',
-                    component: () =>import ("@/views/DashboardView.vue"),
-                },
-                {
-                    path: 'accountType',
-                    name: 'accountType',
-                    component: AccountTypeListView
-                },
-                {
-                    path: 'accountTypeAdd',
-                    name: 'accountTypeAdd',
-                    component: AccountTypeAdd
-                },
-                {
-                    path: 'editAccountType/:id',
-                    name: 'editAccountType',
-                    component: AccountTypeEdit,
-                    props: true // Pass route params as props to the component
-                },
-                {
-                    path: 'loanType',
-                    name: 'loanType',
-                    component: LoanTypeListView
-                },
-                {
-                    path: 'loanTypeAdd',
-                    name: 'loanTypeAdd',
-                    component: LoanTypeAddView
-                },
-                {
-                    path: 'editLoanType/:id',
-                    name: 'editLoanType',
-                    component: LoanTypeEdit,
-                    props: true // Pass route params as props to the component
-                },
-                {
-                    path: 'loan',
-                    name: 'loan',
-                    component: LoanListView
-                },
-                {
-                    path: 'loanAdd',
-                    name: 'loanAdd',
-                    component: LoanAddView
-                },
-                {
-                    path: 'loanProposal',
-                    name: 'loanProposal',
-                    component: LoanProposalListView
-                },
-                {
-                    path: 'loanProposalAdd',
-                    name: 'loanProposalAdd',
-                    component: LoanProposalAddView
-                },
-                {
-                    path: 'editloanProposal/:id',
-                    name: 'editloanProposal',
-                    component: LoanProposalEdit,
-                    props: true
-                },
-                {
-                    path: 'depositType',
-                    name: 'depositType',
-                    component: DepositTypeListView
-                },
-                {
-                    path: 'depositTypeAdd',
-                    name: 'depositTypeAdd',
-                    component: DepositTypeAdd
-                },
-                {
-                    path: 'editdepositType/:id',
-                    name: 'editdepositType',
-                    component: DepositTypeEdit,
-                    props: true // Pass route params as props to the component
-                },
-                {
-                    path: 'deposit',
-                    name: 'deposit',
-                    component: DepositListView
-                },
-                {
-                    path: 'depositAdd',
-                    name: 'depositAdd',
-                    component: DepositAdd
-                },
-                {
-                    path: 'editdeposit/:id',
-                    name: 'editdeposit',
-                    component: DepositEdit,
-                    props: true
-                },
-                {
-                    path: 'withdrawal',
-                    name: 'withdrawal',
-                    component: WithdrawalListView
-                },
-                {
-                    path: 'withdrawalAdd',
-                    name: 'withdrawalAdd',
-                    component: WithdrawalAdd
-                },
-                {
-                    path: 'cashDeposit',
-                    name: 'cashDeposit',
-                    component: CashDepositListView
-                },
-                {
-                    path: 'cashDepositAdd',
-                    name: 'cashDepositAdd',
-                    component: CashDepositAdd
-                },
-                {
-                    path: 'payment',
-                    name: 'payment',
-                    component: PaymentListView
-                },
-                {
-                    path: 'paymentAdd',
-                    name: 'paymentAdd',
-                    component: PaymentAdd
-                },
-                {
-                    path: 'paymentEdit/:id',
-                    name: 'paymentEdit',
-                    component: PaymentEdit
-                },
-                {
-                    path: 'interest',
-                    name: 'interest',
-                    component: InterestListView
-                },
-                {
-                    path: 'interestAdd',
-                    name: 'interestAdd',
-                    component: InterestAdd
-                },
-
-                {
-                    path: 'expesecategoryadd',
-                    name: 'expesecategoryadd',
-                    component: ExpenseCategoryAddView
-                },
-                {
-                    path: 'expensecategory',
-                    name: 'expensecategory',
-                    component: ExpenseCategoryList
-                },
-
-                {
-                    path: 'expensecategoryedit/:id',
-                    name: 'expensecategoryedit',
-                    component: ExpenseCategoryEditView,
-                    props: true
-                },
-
-                {
-                    path: 'expense',
-                    name: 'expense',
-                    component: ExpenseListView
-                },
-                {
-                    path: 'expenseadd',
-                    name: 'expenseadd',
-                    component: ExpenseAddView
-                },
-                {
-                    path: 'expenseedit/:id',
-                    name: 'expenseedit',
-                    component: ExpenseEditView,
-                    props: true
-                },
-
-                {
-                    path: 'employeeType',
-                    name: 'employeeType',
-                    component: EmployeeTypeListView
-                },
-                {
-                    path: 'employeeTypeadd',
-                    name: 'employeeTypeadd',
-                    component: EmployeeTypeAdd
-                },
-                {
-                    path: 'employeeTypeEdit/:id',
-                    name: 'employeeTypeEdit',
-                    component: EmployeeTypeEditView
-                },
-
-                {
-                    path: 'employee',
-                    name: 'employee',
-                    component: EmployeeListView
-                },
-                {
-                    path: 'employeeadd',
-                    name: 'employeeadd',
-                    component: EmployeeAdd
-                },
-                {
-                    path: 'employeeEdit/:id',
-                    name: 'employeeEdit',
-                    component: EmployeeEditView,
-                    props: true
-
-                },
-
-                {
-                    path: 'customerList',
-                    name: 'customerList',
-                    component: () =>import ("@/views/Customer/CustomerView.vue"),
-                },
-                {
-                    path: 'customerAdd',
-                    name: 'customerAdd',
-                    component: () =>import ("@/views/Customer/CustomerAdd.vue"),
-                },
-                {
-                    path: 'cardType',
-                    name: 'cardType',
-                    component: CardTypeListView
-                },
-                {
-                    path: 'cardAdd',
-                    name: 'cardAdd',
-                    component: CardTypeAdd
-                },
-                {
-                    path: 'editCardType/:id',
-                    name: 'editCardType',
-                    component: CardTypeEdit,
-                    props: true // Pass route params as props to the component
-                },
-                {
-                    path: 'cardDetails',
-                    name: 'cardDetails',
-                    component: CardDetailsListView
-                },
-                {
-                    path: 'cardDetailsAdd',
-                    name: 'cardDetailsAdd',
-                    component: CardDetailsAdd
-                },
-                {
-                    path: 'editCardDetails/:id',
-                    name: 'editCardDetails',
-                    component: CardDetailsEdit,
-                    props: true // Pass route params as props to the component
-                },
-                {
-                    path: 'branch',
-                    name: 'branch',
-                    component: BranchListView
-                },
-                {
-                    path: 'branchAdd',
-                    name: 'branchAdd',
-                    component: BranchAddView
-                },
-
-                {
-                    path: 'branchEdid/:id',
-                    name: 'branchEdid',
-                    component: BranchEditView,
-                    props: true
-                },
-            ]
+          path: 'accountType',
+          name: 'accountType',
+          component: AccountTypeListView
         },
-    ]
+        {
+          path: 'accountTypeAdd',
+          name: 'accountTypeAdd',
+          component: AccountTypeAdd
+        },
+        {
+          path: 'editAccountType/:id',
+          name: 'editAccountType',
+          component: AccountTypeEdit,
+          props: true // Pass route params as props to the component
+        },
+        {
+          path: 'loanType',
+          name: 'loanType',
+          component: LoanTypeListView
+        },
+        {
+          path: 'loanTypeAdd',
+          name: 'loanTypeAdd',
+          component: LoanTypeAddView
+        },
+        {
+          path: 'editLoanType/:id',
+          name: 'editLoanType',
+          component: LoanTypeEdit,
+          props: true // Pass route params as props to the component
+        },
+        {
+          path: 'loan',
+          name: 'loan',
+          component: LoanListView
+        },
+        {
+          path: 'loanAdd',
+          name: 'loanAdd',
+          component: LoanAddView
+        },
+        {
+          path: 'loanProposal',
+          name: 'loanProposal',
+          component: LoanProposalListView
+        },
+        {
+          path: 'loanProposalAdd',
+          name: 'loanProposalAdd',
+          component: LoanProposalAddView
+        },
+        {
+          path: 'editloanProposal/:id',
+          name: 'editloanProposal',
+          component: LoanProposalEdit,
+          props: true
+        },
+        {
+          path: 'depositType',
+          name: 'depositType',
+          component: DepositTypeListView
+        },
+        {
+          path: 'depositTypeAdd',
+          name: 'depositTypeAdd',
+          component: DepositTypeAdd
+        },
+        {
+          path: 'editdepositType/:id',
+          name: 'editdepositType',
+          component: DepositTypeEdit,
+          props: true // Pass route params as props to the component
+        },
+        {
+          path: 'deposit',
+          name: 'deposit',
+          component: DepositListView
+        },
+        {
+          path: 'depositAdd',
+          name: 'depositAdd',
+          component: DepositAdd
+        },
+        {
+          path: 'editdeposit/:id',
+          name: 'editdeposit',
+          component: DepositEdit,
+          props: true
+        },
+        {
+          path: 'withdrawal',
+          name: 'withdrawal',
+          component: WithdrawalListView
+        },
+        {
+          path: 'withdrawalAdd',
+          name: 'withdrawalAdd',
+          component: WithdrawalAdd
+        },
+        {
+          path: 'cashDeposit',
+          name: 'cashDeposit',
+          component: CashDepositListView
+        },
+        {
+          path: 'cashDepositAdd',
+          name: 'cashDepositAdd',
+          component: CashDepositAdd
+        },
+        {
+          path: 'payment',
+          name: 'payment',
+          component: PaymentListView
+        },
+        {
+          path: 'paymentAdd',
+          name: 'paymentAdd',
+          component: PaymentAdd
+        },
+        {
+          path: 'paymentEdit/:id',
+          name: 'paymentEdit',
+          component: PaymentEdit
+        },
+        {
+          path: 'interest',
+          name: 'interest',
+          component: InterestListView
+        },
+        {
+          path: 'interestAdd',
+          name: 'interestAdd',
+          component: InterestAdd
+        },
+
+        {
+          path: 'expesecategoryadd',
+          name: 'expesecategoryadd',
+          component: ExpenseCategoryAddView
+        },
+        {
+          path: 'expensecategory',
+          name: 'expensecategory',
+          component: ExpenseCategoryList
+        },
+
+        {
+          path: 'expensecategoryedit/:id',
+          name: 'expensecategoryedit',
+          component: ExpenseCategoryEditView,
+          props: true
+        },
+
+        {
+          path: 'expense',
+          name: 'expense',
+          component: ExpenseListView
+        },
+        {
+          path: 'expenseadd',
+          name: 'expenseadd',
+          component: ExpenseAddView
+        },
+        {
+          path: 'expenseedit/:id',
+          name: 'expenseedit',
+          component: ExpenseEditView,
+          props: true
+        },
+
+        {
+          path: 'employeeType',
+          name: 'employeeType',
+          component: EmployeeTypeListView
+        },
+        {
+          path: 'employeeTypeadd',
+          name: 'employeeTypeadd',
+          component: EmployeeTypeAdd
+        },
+        {
+          path: 'employeeTypeEdit/:id',
+          name: 'employeeTypeEdit',
+          component: EmployeeTypeEditView
+        },
+
+        {
+          path: 'employee',
+          name: 'employee',
+          component: EmployeeListView
+        },
+        {
+          path: 'employeeadd',
+          name: 'employeeadd',
+          component: EmployeeAdd
+        },
+        {
+          path: 'employeeEdit/:id',
+          name: 'employeeEdit',
+          component: EmployeeEditView,
+          props: true
+        },
+
+        {
+          path: 'customerList',
+          name: 'customerList',
+          component: () => import('@/views/Customer/CustomerView.vue')
+        },
+        {
+          path: 'customerAdd',
+          name: 'customerAdd',
+          component: () => import('@/views/Customer/CustomerAdd.vue')
+        },
+        {
+          path: 'cardType',
+          name: 'cardType',
+          component: CardTypeListView
+        },
+        {
+          path: 'cardAdd',
+          name: 'cardAdd',
+          component: CardTypeAdd
+        },
+        {
+          path: 'editCardType/:id',
+          name: 'editCardType',
+          component: CardTypeEdit,
+          props: true // Pass route params as props to the component
+        },
+        {
+          path: 'cardDetails',
+          name: 'cardDetails',
+          component: CardDetailsListView
+        },
+        {
+          path: 'cardDetailsAdd',
+          name: 'cardDetailsAdd',
+          component: CardDetailsAdd
+        },
+        {
+          path: 'editCardDetails/:id',
+          name: 'editCardDetails',
+          component: CardDetailsEdit,
+          props: true // Pass route params as props to the component
+        },
+        {
+          path: 'branch',
+          name: 'branch',
+          component: BranchListView
+        },
+        {
+          path: 'branchAdd',
+          name: 'branchAdd',
+          component: BranchAddView
+        },
+
+        {
+          path: 'branchEdid/:id',
+          name: 'branchEdid',
+          component: BranchEditView,
+          props: true
+        }
+      ]
+    }
+  ]
 })
-
 
 export default router

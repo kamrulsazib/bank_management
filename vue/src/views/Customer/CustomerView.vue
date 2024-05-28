@@ -24,20 +24,19 @@ export default {
                 })
 
         },
-
-        // accountTypeDelete(id) {
-        //     axios.delete(`${this.url}/${id}`)
-        //         .then(() => {
-        //             this.getAccountType();
-        //             this.$router.push('/dashboard/accountType');
-        //         })
-        //         .catch(error => {
-        //             console.error('Error deleting account type:', error);
-        //         });
-        // },
-        // edit(id) {
-        //     this.$router.push({ name: 'editAccountType', params: { id: id } });
-        // },
+        customerDelete(id) {
+            axios.delete(`${this.url}/${id}`)
+                .then(() => {
+                    this.getCustomer();
+                    this.$router.push({name:'customerList'});
+                })
+                .catch(error => {
+                    console.error('Error deleting customer:', error);
+                });
+        },
+        edit(id) {
+            this.$router.push({ name: 'customerEdit', params: { id: id } });
+        },
 
 
     },
@@ -102,7 +101,7 @@ export default {
                             <td>{{ d.account_type.account_type }}</td>
                             <td>
                                 <button class="btn btn-success btn-sm me-2" @click="edit(d.id)">Edit</button>&nbsp;
-                                <button class="btn btn-danger btn-sm" @click="accountTypeDelete(d.id)">Delete</button>
+                                <button class="btn btn-danger btn-sm" @click="customerDelete(d.id)">Delete</button>
                            
                             </td>
                         </tr>

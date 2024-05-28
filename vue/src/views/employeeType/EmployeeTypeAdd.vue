@@ -47,7 +47,7 @@ export default {
       })
       .then(res => {
         // console.log(res)
-        this.$router.push("/dashboard/employeeType");
+        this.$router.push({name:"employeeType"});
       })
       .catch(error => {
         console.error("Error adding employee type:", error);
