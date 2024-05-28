@@ -95,24 +95,49 @@ class CustomerController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Customer $customer)
+    public function edit(string $id)
     {
-        //
+        $customer = Customer::with('accountType')->find($id);
+        return $this->sendResponse($customer, 'customer Edit successfully');
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Customer $customer)
+    public function update(Request $request, $id)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'customer_name' => 'required|string|max:255',
+            'mobile' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+            'photo' => 'required|image|max:2048',
+            'nid_number' => 'required|string|max:255',
+            'date_of_birth' => 'required|date',
+            'nominee_name' => 'required|string|max:255',
+            'nominee_mobile' => 'required|string|max:255',
+            'nominee_nid_number' => 'required|string|max:255',
+            'document' => 'required|string|max:255',
+            'account_type_id' => 'required|integer',
+            'password' => 'required|string|min:8',
+        ]);
+        if ($validator->fails()) {
+            return $this->sendError('Validation Error.', $validator->errors(), 422);
+        }
+        if ($request->has('photo')) {
+            $file = $request->file('photo');
+            $imagename = $file->getClientOriginalName();
+            $filename = time() . $imagename;
+            $path = 'images/customer/';
+            Storage::disk('public')->put($path . $filename, file_get_contents($file));
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Customer $customer)
+    public function destroy(string $id)
     {
-        //
+        $customer = Customer::find($id)->delete();
+        return $this->sendResponse($customer, 'customer Delete successfully');
     }
 }

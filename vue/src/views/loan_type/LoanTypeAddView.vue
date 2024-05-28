@@ -27,7 +27,7 @@ export default {
                 .then(res => {
                     this.loanType = (res.data.data)
                     console.log(res.data.data)
-                    this.$router.push("/dashboard/loanType")
+                    this.$router.push({name:"loanType"})
                 })
 
         },
@@ -54,7 +54,6 @@ export default {
 <template>
     <main>
         <NavbarViewVue />
-        <section class="main_content dashboard_part">
             <div class="container card mt-5 ms-2">
                 <div class="row justify-content-center">
                     <div class="col-md-6">
@@ -76,6 +75,5 @@ export default {
                     </div>
                 </div>
             </div>
-        </section>
     </main>
 </template>

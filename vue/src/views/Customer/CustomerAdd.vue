@@ -4,194 +4,121 @@
             <div class="row justify-content-center">
                 <div class="col-md-12">
                     <div class="card-header mt-5">
-                        <h4 class="table_heading text-center">Customer Sign Up</h4>
+                        <h4 class="table_heading text-center">Customer Update</h4>
                     </div>
                     <div class="card-body">
                         <form @submit.prevent="handleSubmit">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="name" class="form-label">Account Number</label>
-                                        <input type="text" v-model="account_number" class="form-control" id="name"
-                                            placeholder="Enter Your Name" readonly>
-                                        <p style="color:red" v-if="nameError">
-                                            {{ nameError }}
-                                        </p>
+                                        <label for="account_number" class="form-label">Account Number</label>
+                                        <input type="text" v-model="account_number" class="form-control" id="account_number" readonly>
                                     </div>
-
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="name" class="form-label">Name</label>
-                                        <input type="text" v-model="name" class="form-control" id="name"
-                                            placeholder="Enter Your Name">
-                                        <p style="color:red" v-if="nameError">
-                                            {{ nameError }}
-                                        </p>
+                                        <input type="text" v-model="name" class="form-control" id="name" placeholder="Enter Your Name">
+                                        <p style="color:red" v-if="nameError">{{ nameError }}</p>
                                     </div>
-
                                 </div>
-                                
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="email" class="form-label">Email</label>
-                                        <input type="email" v-model="email" class="form-control" id="email"
-                                            placeholder="Enter Your Email">
-                                        <p style="color:red" v-if="emailError">
-                                            {{ emailError }}
-                                        </p>
+                                        <input type="email" v-model="email" class="form-control" id="email" placeholder="Enter Your Email">
+                                        <p style="color:red" v-if="emailError">{{ emailError }}</p>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="phone" class="form-label">Phone</label>
-                                        <input type="text" v-model="phone" class="form-control" id="phone"
-                                            placeholder="Enter Your Mobile">
-                                        <p style="color:red" v-if="phoneError">
-                                            {{ phoneError }}
-                                        </p>
+                                        <input type="text" v-model="phone" class="form-control" id="phone" placeholder="Enter Your Mobile">
+                                        <p style="color:red" v-if="phoneError">{{ phoneError }}</p>
                                     </div>
-
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="address" class="form-label">Address</label>
-                                        <input type="text" v-model="address" class="form-control" id="address"
-                                            placeholder="Enter Your address">
-                                        <p style="color:red" v-if="addressError">
-                                            {{ addressError }}
-                                        </p>
+                                        <input type="text" v-model="address" class="form-control" id="address" placeholder="Enter Your Address">
+                                        <p style="color:red" v-if="addressError">{{ addressError }}</p>
                                     </div>
-
                                 </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="nidNumber" class="form-label">NID Number</label>
-                                        <input type="text" v-model="nidNumber" class="form-control" id="nidNumber"
-                                            placeholder="Enter Your NID Number">
-                                        <p style="color:red" v-if="nidNumberError">
-                                            {{ nidNumberError }}
-                                        </p>
+                                        <input type="text" v-model="nidNumber" class="form-control" id="nidNumber" placeholder="Enter Your NID Number">
+                                        <p style="color:red" v-if="nidNumberError">{{ nidNumberError }}</p>
                                     </div>
-
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="date" class="form-label">Date of Birth</label>
-                                        <input type="date" v-model="date" class="form-control" id="date"
-                                            placeholder="Enter Your date">
-                                        <p style="color:red" v-if="dateError">
-                                            {{ dateError }}
-                                        </p>
+                                        <input type="date" v-model="date" class="form-control" id="date">
+                                        <p style="color:red" v-if="dateError">{{ dateError }}</p>
                                     </div>
-
                                 </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="nomineeName" class="form-label">Nominee Name</label>
-                                        <input type="text" v-model="nomineeName" class="form-control" id="nomineeName"
-                                            placeholder="Enter Nominee Name">
-                                        <p style="color:red" v-if="nomineeNameError">
-                                            {{ nomineeNameError }}
-                                        </p>
+                                        <input type="text" v-model="nomineeName" class="form-control" id="nomineeName" placeholder="Enter Nominee Name">
+                                        <p style="color:red" v-if="nomineeNameError">{{ nomineeNameError }}</p>
                                     </div>
-
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="nomineePhone" class="form-label">Nominee Phone</label>
-                                        <input type="text" v-model="nomineePhone" class="form-control" id="nomineePhone"
-                                            placeholder="Enter Nominee Mobile Number">
-                                        <p style="color:red" v-if="nomineePhoneError">
-                                            {{ nomineePhoneError }}
-                                        </p>
+                                        <input type="text" v-model="nomineePhone" class="form-control" id="nomineePhone" placeholder="Enter Nominee Mobile Number">
+                                        <p style="color:red" v-if="nomineePhoneError">{{ nomineePhoneError }}</p>
                                     </div>
-
                                 </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="nomineeNID" class="form-label">Nominee NID</label>
-                                        <input type="text" v-model="nomineeNID" class="form-control" id="nomineeNID"
-                                            placeholder="Enter Nominee NID">
-                                        <p style="color:red" v-if="nomineeNIDError">
-                                            {{ nomineeNIDError }}
-                                        </p>
+                                        <input type="text" v-model="nomineeNID" class="form-control" id="nomineeNID" placeholder="Enter Nominee NID">
+                                        <p style="color:red" v-if="nomineeNIDError">{{ nomineeNIDError }}</p>
                                     </div>
-
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="document" class="form-label">Document</label>
-                                        <input type="text" v-model="document" class="form-control" id="document"
-                                            placeholder="Enter Your Document">
-                                        <p style="color:red" v-if="documentError">
-                                            {{ documentError }}
-                                        </p>
+                                        <input type="text" v-model="document" class="form-control" id="document" placeholder="Enter Document">
+                                        <p style="color:red" v-if="documentError">{{ documentError }}</p>
                                     </div>
-
                                 </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="nomineeNid" class="form-label">Account Type</label>
-                                        <select class="form-select" v-model="selectedAccountType"
-                                            aria-label="Default select example">
+                                        <label for="selectedAccountType" class="form-label">Account Type</label>
+                                        <select class="form-select" v-model="selectedAccountType" aria-label="Default select example">
                                             <option disabled value="">Please select an account type</option>
-                                            <option v-for="(d, i) in accountType" :key="i" :value="d.id">
-                                                {{ d.account_type }}</option>
-
+                                            <option v-for="(d, i) in accountType" :key="i" :value="d.id">{{ d.account_type }}</option>
                                         </select>
-                                        <p style="color:red" v-if="accountTypeError">
-                                            {{ accountTypeError }}
-                                        </p>
+                                        <p style="color:red" v-if="accountTypeError">{{ accountTypeError }}</p>
                                     </div>
-
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="formFileMultiple" class="form-label">Image</label>
-                                        <input class="form-control" type="file" id="formFileMultiple"
-                                            @change="handleImageUpload">
-                                        <p style="color:red" v-if="imageError">
-                                            {{ imageError }}
-                                        </p>
+                                        <input class="form-control" type="file" id="formFileMultiple" @change="handleImageUpload">
+                                        <p style="color:red" v-if="imageError">{{ imageError }}</p>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="password" class="form-label">Password</label>
-                                        <input type="password" v-model="password" class="form-control" id="password"
-                                            placeholder="********">
-                                        <p style="color:red" v-if="passwordError">
-                                            {{ passwordError }}
-                                        </p>
+                                        <input type="password" v-model="password" class="form-control" id="password" placeholder="Password">
+                                        <p style="color:red" v-if="passwordError">{{ passwordError }}</p>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <button type="submit" @click="savaCustomer"
-                                            class="btn btn-primary form-control mt-4">Submit</button>
+                                        <button type="submit" @click="savaCustomer" class="btn btn-primary form-control mt-4">Submit</button>
                                     </div>
                                 </div>
                             </div>
                         </form>
-
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
 </template>

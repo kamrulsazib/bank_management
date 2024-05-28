@@ -61,7 +61,7 @@ export default {
             };
             axios.post(this.url, allData)
             .then(res => {
-                this.$router.push('/dashboard/loanProposal');
+                this.$router.push({name:'loanProposal'});
             })
             .catch(error => {
                 console.error('Error fetching loanProposal',error);
@@ -84,8 +84,6 @@ export default {
 <template>
     <main>
         <NavbarViewVue />
-
-        <section class="main_content dashboard_part">
             <div class="container card mt-5 ms-2">
                 <div class="row justify-content-center">
                     <div class="col-md-12">
@@ -138,6 +136,5 @@ export default {
                 </div>
 
             </div>
-        </section>
     </main>
 </template>

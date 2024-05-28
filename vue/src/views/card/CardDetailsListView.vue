@@ -65,7 +65,6 @@ export default {
                     </div>
                     <div class="col-md-6 text-end mt-2">
                         <RouterLink :to="{name:'cardDetailsAdd'}" class="btn btn-warning">Add New</RouterLink>
-
                     </div>
 
                 </div>

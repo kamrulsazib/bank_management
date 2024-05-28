@@ -13,8 +13,8 @@
                                                 <img src="/img/icon/man.svg" alt="image" />
                                             </div>
                                             <div class="count_content">
-                                                <h3><span class="counter">520</span></h3>
-                                                <p>Transaction</p>
+                                                <h3><span class="counter">{{totalCustomer}}</span></h3>
+                                                <p>Total Customer</p>
                                             </div>
                                         </div>
                                         <div class="single_quick_activity d-flex">
@@ -22,8 +22,8 @@
                                                 <img src="/img/icon/cap.svg" alt="image" />
                                             </div>
                                             <div class="count_content">
-                                                <h3><span class="counter">6969</span></h3>
-                                                <p>Nurses</p>
+                                                <h3><span class="counter">{{ Withdrawal }}</span></h3>
+                                                <p>Total Withdraw</p>
                                             </div>
                                         </div>
                                         <div class="single_quick_activity d-flex">
@@ -31,8 +31,8 @@
                                                 <img src="/img/icon/wheel.svg" alt="image" />
                                             </div>
                                             <div class="count_content">
-                                                <h3><span class="counter">7510</span></h3>
-                                                <p>Patients</p>
+                                                <h3><span class="counter">{{Loan}}</span></h3>
+                                                <p>Total Lone</p>
                                             </div>
                                         </div>
                                         <div class="single_quick_activity d-flex">
@@ -40,8 +40,8 @@
                                                 <img src="/img/icon/pharma.svg" alt="image" />
                                             </div>
                                             <div class="count_content">
-                                                <h3><span class="counter">2110</span></h3>
-                                                <p>Pharmacusts</p>
+                                                <h3><span class="counter">{{ Payment }}</span></h3>
+                                                <p>Total Payment</p>
                                             </div>
                                         </div>
                                     </div>
@@ -54,33 +54,33 @@
                     <div class="white_box mb_30">
                         <div class="box_header border_bottom_1px">
                             <div class="main-title">
-                                <h3 class="mb_25">Hospital Survey</h3>
+                                <h3 class="mb_25">Bank Survey</h3>
                             </div>
                         </div>
                         <div class="income_servay">
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="count_content">
-                                        <h3>$ <span class="counter">305</span></h3>
-                                        <p>Today's Income</p>
+                                        <h3>$ <span class="counter">{{ todaysWithdrawal }}</span></h3>
+                                        <p>Today's Withdraw</p>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="count_content">
-                                        <h3>$ <span class="counter">1005</span></h3>
-                                        <p>This Week's Income</p>
+                                        <h3>$ <span class="counter">{{ todaysPayment }}</span></h3>
+                                        <p>Today's Payment</p>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="count_content">
-                                        <h3>$ <span class="counter">5505</span></h3>
-                                        <p>This Month's Income</p>
+                                        <h3>$ <span class="counter">{{ todaysLoan }}</span></h3>
+                                        <p>Today's Loan</p>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="count_content">
-                                        <h3>$ <span class="counter">155615</span></h3>
-                                        <p>This Year's Income</p>
+                                        <h3>$ <span class="counter">{{ todaysCashDeposit }}</span></h3>
+                                        <p>Today's Cash Diposit</p>
                                     </div>
                                 </div>
                             </div>
@@ -92,7 +92,7 @@
                     <div class="white_box QA_section card_height_100">
                         <div class="white_box_tittle list_header m-0 align-items-center">
                             <div class="main-title mb-sm-15">
-                                <h3 class="m-0 nowrap">Patients</h3>
+                                <h3 class="m-0 nowrap">Accounts</h3>
                             </div>
                             <div class="box_right d-flex lms_block">
                                 <div class="serach_field-area2">
@@ -113,7 +113,7 @@
                             <table class="table lms_table_active2">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Patients Name</th>
+                                        <th scope="col">Customer Name</th>
                                         <th scope="col">department</th>
                                         <th scope="col">Appointment Date</th>
                                         <th scope="col">Serial Number</th>
@@ -559,3 +559,51 @@
         </div>
     </div>
 </template>
+<script>
+  import axios from 'axios';
+  
+  export default {
+    data() {
+      return {
+        totalCustomer: 0,
+        totalAmount: 0,
+        Calculate:0,
+        Withdrawal:0,
+        CashDeposit:0,
+        Loan:0,
+        Payment:0,
+
+        todaysWithdrawal:0,
+        todaysCashDeposit:0,
+        todaysLoan:0,
+        todaysPayment:0,
+      };
+    },
+    mounted() {
+      this.fetchTotalAmount();
+    },
+    methods: {
+      fetchTotalAmount() {
+        axios.get('http://127.0.0.1:8000/api/calculate')
+          .then(res => {
+            // console.log('API response:', res.data.data);
+            this.Calculate = parseFloat(res.data.data.Calculate);
+            this.Withdrawal = parseFloat(res.data.data.Withdrawal);
+            this.CashDeposit = parseFloat(res.data.data.CashDeposit);
+            this.Loan = parseFloat(res.data.data.Loan);
+            this.Payment = parseFloat(res.data.data.Payment);
+            this.totalCustomer = parseFloat(res.data.data.Customer);
+            this.totalAmount = this.Calculate-this.Withdrawal-this.Loan+this.CashDeposit-this.Payment;
+
+            this.todaysWithdrawal=parseFloat(res.data.data.todaysWithdrawal);
+            this.todaysCashDeposit=parseFloat(res.data.data.todaysCashDeposit);
+            this.todaysLoan=parseFloat(res.data.data.todaysLoan);
+            this.todaysPayment=parseFloat(res.data.data.todaysPayment);
+          })
+          .catch(error => {
+            console.error('Error fetching total amount:', error);
+          });
+      }
+    }
+  };
+  </script>
