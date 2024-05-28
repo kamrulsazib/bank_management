@@ -28,6 +28,7 @@ export default {
                     this.loanType = (res.data.data)
                     console.log(res.data.data)
                     this.$router.push({name:"loanType"})
+
                 })
 
         },

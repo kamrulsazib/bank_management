@@ -11,6 +11,13 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">A/C Number</label>
+                                    <input type="text" v-model="accountNumber" class="form-control"
+                                        placeholder="Enter A/C Number">
+                                    <p style="color:red" v-if="accountNumberError">{{ accountNumberError }}</p>
+                                </div>
+                                <div class="mb-3">
+
                                     <label for="exampleInputEmail1" class="form-label">Customer Name</label>
                                     <select v-model="selectCustomer" class="form-select col-md-10">
                                         <option value="">Customer Name</option>
@@ -33,10 +40,13 @@
                                     <input type="text" v-model="amount" class="form-control"
                                         placeholder="Enter Loan Proposan Amount">
                                     <p style="color:red" v-if="amountError">{{ amountError }}</p>
+
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
+
+
                                     <label for="exampleInputEmail1" class="form-label">Date</label>
                                     <input v-model="date" type="date" class="form-control"
                                         placeholder="Enter Deposit Date">
@@ -55,6 +65,7 @@
                                         <option value="pending">pending</option>
                                         <option value="cancel">cancel</option>
                                     </select>
+
                                     <p style="color:red" v-if="tenureError">{{ tenureError }}</p>
                                 </div>
                             </div>
@@ -82,6 +93,7 @@ export default {
             url: 'http://127.0.0.1:8000/api/loanProposal',
             customer: [],
             loanType: [],
+            accountNumber: '',
             selectCustomer: '',
             selectLoanType: '',
             amount: '',
@@ -102,7 +114,7 @@ export default {
     mounted() {
         this.getcustomer();
         this.getloanType();
-        this.getdeposit();
+        this.getloanProposal();
     },
     methods: {
         getcustomer() {
@@ -124,18 +136,18 @@ export default {
                 });
 
         },
-        getdeposit() {
+        getloanProposal() {
             const id = this.id
             axios.get(this.url + '/' + this.id + '/edit')
                 .then((res) => {
                     const dt = res.data.data;
+                    this.accountNumber= dt.customer.account_number 
                     this.selectCustomer = dt.customer_id;
                     this.selectLoanType = dt.loan_type_id;
                     this.amount = dt.amount;
                     this.date = dt.date;
                     this.tenure = dt.tenure
                     this.status = dt.status
-
                     console.log(dt);
                 })
         },
@@ -158,14 +170,6 @@ export default {
                 });
 
         },
-
-        // clearErrors() {
-        //     this.customerError ,
-        //     this.loanTypeError ,
-        //     this.amountError ,
-        //     this.dateError ,
-        //     this.tenureError         
-        // }
     },
 }
 

@@ -64,9 +64,14 @@ class LoanProprosalController extends Controller
      */
     public function edit(string $id)
     {
-        $LoanProposal = LoanProprosal::find($id);
+        $LoanProposal = LoanProprosal::with('customer')->find($id);
         return $this->sendResponse($LoanProposal,'Loan Proposal Fetched Successfully');
     }
+    // public function sss(Request $request)
+    // {
+    //     $LoanProposal = LoanProprosal::with('customer')->find($request->);
+    //     return $this->sendResponse($LoanProposal,'Loan Proposal Fetched Successfully');
+    // }
 
     /**
      * Update the specified resource in storage.

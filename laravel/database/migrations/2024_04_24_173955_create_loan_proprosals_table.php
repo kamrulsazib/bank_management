@@ -18,6 +18,7 @@ return new class extends Migration
             $table->decimal('amount',10,2);
             $table->date('date');
             $table->integer('tenure');
+            $table->enum('status',['pending','success','cancel'])->default('pending');
             $table->timestamps();
         });
     }
