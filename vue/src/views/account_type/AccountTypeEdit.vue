@@ -8,7 +8,6 @@
                             <h4 class=" table_heading">Account Type Edit</h4>
                         </div>
                         <div class="card-body">
-                            <!-- <form @submit.prevent="handleSubmit"> -->
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Account Type</label>
                                 <input type="text" v-model="account_type" class="form-control"
